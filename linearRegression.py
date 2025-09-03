@@ -5,6 +5,10 @@ import sklearn
 from sklearn import linear_model
 from sklearn.utils import shuffle
 
+import matplotlib.pyplot as pyplot
+import pickle
+from matplotlib import style
+
 # data reading
 data = pd.read_csv("student-mat.csv", sep = ";")
 
@@ -24,6 +28,10 @@ linear = linear_model.LinearRegression()
 linear.fit(x_train, y_train)
 acc = linear.score(x_test, y_test)
 print(acc)
+
+# saving the model
+with open("student_model.pickle", "wb") as f:
+    pickle.dump(linear f)
 
 # display coefficients and intercepts
 print ("Coefficients: \n", linear.coef_)
